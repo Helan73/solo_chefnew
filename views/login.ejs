@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Solo-Chef:Login</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
+            <div class="col-12 col-lg-6">
+                <img src="/img/hero-image.png" width="607" height="510" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="Solo-Chef">
+            </div>
+            <div class="col-12 col-lg-6">
+                <h4 ><span style="font-weight: bold;">Solo-Chef: Your Culinary Companion </span>login to continue..</h4>
+                <br><br><br>
+                <div class="form-container">
+                    <h2>Login</h2>
+                    <form action="/login" method="post">
+                        <div class="form-group">
+                            <label for="name">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Login</button>
+                    </form>
+                    <p>Don't have an account? <a href="/signup">Signup</a></p>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

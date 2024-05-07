@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+</head>
+<body>
+    <h1>User Details</h1>
+    <br>
+       <% if (user) { %>
+        <div class="col-12 col-md-4">
+            <img src="/img/<%- user.image %>" class="img-fluid sticky-top rounded" style="top: 20px; width: 200px; height: 200px; border-radius: 5px;" alt="<%- user.name %>"
+            loading="lazy"><br>
+       
+                        
+            </div><br>
+        <p>Name: <%= user.name %></p>
+        <p>Email: <%= user.email %></p>
+        
+        <a href="/edit" class="btn btn-outline-secondary btn-lg px-4 me-md">edit profile</a> <br><br>
+        <br>
+        <a href="/created-recipes" class="btn btn-primary btn-dark btn-lg px-4 me-md">Created Recipes</a><br><br>
+         <a href="/saved-recipes" class="btn btn-outline-secondary btn-lg px-4 me-md">Saved Recipes</a>
+    
+    <% } else { %>
+        <p>User not found. <a href="/login">Login</a>.</p>
+    <% } %>
+</body>
+</html>

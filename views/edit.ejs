@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Details</title>
+    <style>
+        /* Style for form container */
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Style for form groups */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        /* Style for labels */
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Style for input fields */
+        
+        input[type="email"],
+        input[type="name"],
+        input[type="file"] ,
+        input[type="password"] ,
+        input[type="newPassword"] 
+        {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Style for edit button */
+        .edit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style for edit button on hover */
+        .edit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Edit Your Details:</h2>
+    <br>
+    <div class="form-container">
+        <form action="/edit" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="name" name="email" placeholder="Enter your email" value="<%= user.email %>" >
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="name" id="name" name="name" placeholder="Enter your Name" value="<%= user.name %>" >
+            </div>
+            <div class="form-group">
+                <label for="password">Current Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your current password"  >
+            </div>
+            <div class="form-group">
+                <label for="name">New Password:</label>
+                <input type="password" id="newPassword" name="newPassword" placeholder="Enter your New Password" >
+            </div>
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+                <!-- Image preview container -->
+                <div id="image-preview">
+                    <% if (user.image) { %>
+                        <img src="/img/<%= user.image %>" alt="Uploaded Image" style="max-width: 70px;">
+                    <% } %>
+                </div>
+            </div>
+            <button type="submit" class="edit-btn">Edit</button>
+        </form>
+    </div>
+    <script>
+        // JavaScript to handle file input change event and display image preview
+        const imageInput = document.getElementById('image');
+        const imagePreview = document.getElementById('image-preview');
+    
+        imageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Create an image element
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.alt = 'Uploaded Image';
+                    img.style.maxWidth = '100px';
+                    // Replace the existing image preview
+                    imagePreview.innerHTML = '';
+                    imagePreview.appendChild(img);
+                };
+                // Read the file as a data URL
+                reader.readAsDataURL(file);
+            } else {
+                // Clear the preview if no file is selected
+                imagePreview.innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
